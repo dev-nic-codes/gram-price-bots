@@ -1,0 +1,22 @@
+[Unit]
+Description=GRAMMING Telegram price bot
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=pricebot
+Group=pricebot
+WorkingDirectory=/opt/gram-price-bots/gramming
+EnvironmentFile=/opt/gram-price-bots/gramming/.env
+ExecStart=/usr/bin/python3 /opt/gram-price-bots/gramming/main.py
+Restart=always
+RestartSec=5
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectSystem=strict
+ProtectHome=true
+ReadWritePaths=/opt/gram-price-bots/gramming
+
+[Install]
+WantedBy=multi-user.target

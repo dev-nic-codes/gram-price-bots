@@ -1,0 +1,22 @@
+[Unit]
+Description=UTYA Telegram price bot
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=pricebot
+Group=pricebot
+WorkingDirectory=/opt/gram-price-bots/utya
+EnvironmentFile=/opt/gram-price-bots/utya/.env
+ExecStart=/usr/bin/python3 /opt/gram-price-bots/utya/main.py
+Restart=always
+RestartSec=5
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectSystem=strict
+ProtectHome=true
+ReadWritePaths=/opt/gram-price-bots/utya
+
+[Install]
+WantedBy=multi-user.target
